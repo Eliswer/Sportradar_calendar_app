@@ -41,7 +41,7 @@ body {
     justify-content: space-between;
     align-items: center;
     height: 2.5rem;
-    margin-bottom: 20px;
+    margin-bottom: 3rem;
 }
 
 .calendar__title p {
@@ -67,11 +67,28 @@ body {
 .calendar__days {
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
 }
 
 .calendar__weekdays {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
     width: 100%;
-    justify-content: space-between;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.calendar__daygrid {
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.calendar__day {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    color: rgb(82, 82, 82);
 }
