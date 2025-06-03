@@ -35,7 +35,7 @@ body {
 
 /* ---- Calendar title styling ---- */
 
-.calendar__title {
+.calendar__header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -44,19 +44,20 @@ body {
     margin-bottom: 3rem;
 }
 
-.calendar__title p {
+.calendar__month-label {
     font-size: 2rem;
 }
 
-.title-icon {
+.calendar__nav-icon {
     position: relative;
     height: 100%;
     border: 2px solid rgb(178, 176, 176);
     border-radius: 20px;
     padding: 5px;
+    cursor: pointer;
 }
 
-.title-icon img {
+.calendar__nav-icon-img {
     object-fit: cover;
     width: 100%;
     height: 100%;
@@ -64,7 +65,7 @@ body {
 
 /* ---- Calendar Body styling ---- */
 
-.calendar__days {
+.calendar__body {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
@@ -79,7 +80,7 @@ body {
     margin-bottom: 10px;
 }
 
-.calendar__daygrid {
+.calendar__day-grid {
     height: 100%;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
