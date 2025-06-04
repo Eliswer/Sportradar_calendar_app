@@ -1,10 +1,18 @@
 const weekDaysWrapper = document.body.querySelector(".calendar__day-grid");
 const monthLabel = document.body.querySelector(".calendar__month-label");
+const rightArrowButton = document.body.querySelector(
+    ".calendar__nav-icon--right"
+);
+const leftArrowButton = document.body.querySelector(
+    ".calendar__nav-icon--left"
+);
 
 //Dynamically get and display the current month and current year
 const currentDate = new Date();
 const currentMonth = currentDate.getMonth();
 const currentYear = currentDate.getFullYear();
+
+let calcMonth = currentMonth;
 
 const monthNames = [
     "January",
@@ -24,33 +32,66 @@ const monthNames = [
 monthLabel.textContent = monthNames[currentMonth] + " " + currentYear;
 
 // Dynamically create empty days before the month starts
-const firstDayOfMonth = new Date(currentYear, currentMonth, 1);
-console.log(firstDayOfMonth);
+function emptyDays() {
+    const firstDayOfMonth = new Date(currentYear, calcMonth, 1);
+    const dayOfWeek = firstDayOfMonth.getDay();
 
-const dayOfWeek = firstDayOfMonth.getDay();
+    const adjustedDayOfWeek = dayOfWeek === 0 ? 6 : dayOfWeek - 1;
 
-const adjustedDayOfWeek = dayOfWeek === 0 ? 6 : dayOfWeek - 1;
-console.log(adjustedDayOfWeek);
+    for (let empty = 0; empty <= adjustedDayOfWeek - 1; empty++) {
+        const emptyDay = document.createElement("div");
+        emptyDay.classList.add("calendar__day");
+        emptyDay.classList.add("calendar__day--empty");
 
-for (let empty = 0; empty <= adjustedDayOfWeek - 1; empty++) {
-    const emptyDay = document.createElement("div");
-    emptyDay.classList.add("calendar__day");
-    emptyDay.classList.add("calendar__day--empty");
-
-    weekDaysWrapper.appendChild(emptyDay);
+        weekDaysWrapper.appendChild(emptyDay);
+    }
 }
+
+emptyDays();
 
 //Create a for loop to fill out the rest of the month days
 const daysInMonth = (year, month) => new Date(year, month + 1, 0).getDate();
-daysInMonth(2020, 12);
-daysInMonth(2024, 2);
 
-const currentDaysOfMonth = daysInMonth(currentYear, currentMonth);
+function displayMonthDays() {
+    const currentDaysOfMonth = daysInMonth(currentYear, calcMonth);
 
-for (let day = 1; day <= currentDaysOfMonth; day++) {
-    const filledDay = document.createElement("div");
-    filledDay.classList.add("calendar__day");
-    filledDay.textContent = day;
+    for (let day = 1; day <= currentDaysOfMonth; day++) {
+        const filledDay = document.createElement("div");
+        filledDay.classList.add("calendar__day");
+        filledDay.textContent = day;
 
-    weekDaysWrapper.appendChild(filledDay);
+        weekDaysWrapper.appendChild(filledDay);
+    }
 }
+
+displayMonthDays();
+
+//Change months on the click of arrow buttons
+leftArrowButton.addEventListener("click", () => {
+    weekDaysWrapper.innerHTML = "";
+
+    if (calcMonth > 0) {
+        calcMonth -= 1;
+        console.log(calcMonth);
+    } else if (calcMonth === 0) {
+        calcMonth = 11;
+    }
+
+    monthLabel.textContent = monthNames[calcMonth] + " " + currentYear;
+    emptyDays();
+    displayMonthDays();
+});
+rightArrowButton.addEventListener("click", () => {
+    weekDaysWrapper.innerHTML = "";
+
+    if (calcMonth < 11) {
+        calcMonth += 1;
+        console.log(calcMonth);
+    } else if (calcMonth === 11) {
+        calcMonth = 0;
+    }
+
+    monthLabel.textContent = monthNames[calcMonth] + " " + currentYear;
+    emptyDays();
+    displayMonthDays();
+});
