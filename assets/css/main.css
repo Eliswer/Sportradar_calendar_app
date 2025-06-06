@@ -93,3 +93,8 @@ body {
     text-align: left;
     color: rgb(82, 82, 82);
 }
+
+.sport-event-day {
+    color: red;
+    border: 1px solid red;
+}

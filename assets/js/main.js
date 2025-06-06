@@ -1,98 +1,89 @@
-const weekDaysWrapper = document.body.querySelector(".calendar__day-grid");
-const monthLabel = document.body.querySelector(".calendar__month-label");
-const rightArrowButton = document.body.querySelector(
-    ".calendar__nav-icon--right"
-);
-const leftArrowButton = document.body.querySelector(
-    ".calendar__nav-icon--left"
-);
+/**
+ * @file main.js
+ * @description Initializes calendar and handles navigation events.
+ */
 
-//Dynamically get and display the current month and current year
-const currentDate = new Date();
-const currentMonth = currentDate.getMonth();
-const currentYear = currentDate.getFullYear();
+import { loadSportData } from "./dataService.js";
+import { renderCalendar } from "./calendarRenderer.js";
 
-let calcMonth = currentMonth;
-let calcYear = currentYear;
+/**
+ * Reference to the element that contains all day cells.
+ * @type {HTMLElement}
+ */
+const dayGrid = document.querySelector(".calendar__day-grid");
 
-const monthNames = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-];
+/**
+ * Element displaying the current month and year.
+ * @type {HTMLElement}
+ */
+const monthLabel = document.querySelector(".calendar__month-label");
 
-monthLabel.textContent = monthNames[currentMonth] + " " + calcYear;
+/**
+ * Button to navigate to the previous month.
+ * @type {HTMLElement}
+ */
+const prevButton = document.querySelector(".calendar__nav-icon--left");
 
-// Dynamically create empty days before the month starts
-function emptyDays() {
-    const firstDayOfMonth = new Date(calcYear, calcMonth, 1);
-    const dayOfWeek = firstDayOfMonth.getDay();
+/**
+ * Button to navigate to the next month.
+ * @type {HTMLElement}
+ */
+const nextButton = document.querySelector(".calendar__nav-icon--right");
 
-    const adjustedDayOfWeek = dayOfWeek === 0 ? 6 : dayOfWeek - 1;
+/**
+ * Stores the zero-indexed month (0 for January).
+ * @type {number}
+ */
+let currentMonth = new Date().getMonth();
 
-    for (let empty = 0; empty <= adjustedDayOfWeek - 1; empty++) {
-        const emptyDay = document.createElement("div");
-        emptyDay.classList.add("calendar__day");
-        emptyDay.classList.add("calendar__day--empty");
+/**
+ * Stores the four-digit year.
+ * @type {number}
+ */
+let currentYear = new Date().getFullYear();
 
-        weekDaysWrapper.appendChild(emptyDay);
-    }
+/**
+ * Initializes the calendar by loading data and rendering the current month.
+ *
+ * @async
+ * @function initializeCalendar
+ */
+async function initializeCalendar() {
+    await loadSportData("./data/sportData.json");
+    renderCalendar(dayGrid, monthLabel, currentYear, currentMonth);
 }
 
-emptyDays();
-
-//Create a for loop to fill out the rest of the month days
-const daysInMonth = (year, month) => new Date(year, month + 1, 0).getDate();
-
-function displayMonthDays() {
-    const currentDaysOfMonth = daysInMonth(calcYear, calcMonth);
-
-    for (let day = 1; day <= currentDaysOfMonth; day++) {
-        const filledDay = document.createElement("div");
-        filledDay.classList.add("calendar__day");
-        filledDay.textContent = day;
-
-        weekDaysWrapper.appendChild(filledDay);
+/**
+ * Updates the calendar to show the previous month.
+ *
+ * @function showPreviousMonth
+ */
+function showPreviousMonth() {
+    if (currentMonth > 0) {
+        currentMonth -= 1;
+    } else {
+        currentMonth = 11;
+        currentYear -= 1;
     }
+    renderCalendar(dayGrid, monthLabel, currentYear, currentMonth);
 }
 
-displayMonthDays();
-
-//Change months on the click of arrow buttons
-leftArrowButton.addEventListener("click", () => {
-    weekDaysWrapper.innerHTML = "";
-
-    if (calcMonth > 0) {
-        calcMonth -= 1;
-    } else if (calcMonth === 0) {
-        calcMonth = 11;
-        calcYear -= 1;
+/**
+ * Updates the calendar to show the next month.
+ *
+ * @function showNextMonth
+ */
+function showNextMonth() {
+    if (currentMonth < 11) {
+        currentMonth += 1;
+    } else {
+        currentMonth = 0;
+        currentYear += 1;
     }
+    renderCalendar(dayGrid, monthLabel, currentYear, currentMonth);
+}
 
-    monthLabel.textContent = monthNames[calcMonth] + " " + calcYear;
-    emptyDays();
-    displayMonthDays();
-});
-rightArrowButton.addEventListener("click", () => {
-    weekDaysWrapper.innerHTML = "";
+prevButton.addEventListener("click", showPreviousMonth);
+nextButton.addEventListener("click", showNextMonth);
 
-    if (calcMonth < 11) {
-        calcMonth += 1;
-    } else if (calcMonth === 11) {
-        calcMonth = 0;
-        calcYear += 1;
-    }
-
-    monthLabel.textContent = monthNames[calcMonth] + " " + calcYear;
-    emptyDays();
-    displayMonthDays();
-});
+initializeCalendar();

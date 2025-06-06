@@ -4,7 +4,7 @@
             "season": 2025,
             "status": "played",
             "timeVenueUTC": "00:00:00",
-            "dateVenue": "2024-11-03",
+            "dateVenue": "2025-11-03",
             "stadium": null,
             "homeTeam": {
                 "name": "Al Shabab",
@@ -46,7 +46,7 @@
             "season": 2025,
             "status": "scheduled",
             "timeVenueUTC": "16:00:00",
-            "dateVenue": "2024-11-03",
+            "dateVenue": "2025-11-03",
             "stadium": null,
             "homeTeam": {
                 "name": "Al Hilal",
@@ -90,7 +90,7 @@
             "season": 2025,
             "status": "scheduled",
             "timeVenueUTC": "15:25:00",
-            "dateVenue": "2024-11-04",
+            "dateVenue": "2025-11-04",
             "stadium": null,
             "homeTeam": {
                 "name": "Al Duhail",
@@ -134,7 +134,7 @@
             "season": 2025,
             "status": "scheduled",
             "timeVenueUTC": "08:00:00",
-            "dateVenue": "2024-11-04",
+            "dateVenue": "2025-11-04",
             "stadium": null,
             "homeTeam": {
                 "name": "Al Faisaly",
@@ -178,7 +178,59 @@
             "season": 2025,
             "status": "scheduled",
             "timeVenueUTC": "00:00:00",
-            "dateVenue": "2024-11-19",
+            "dateVenue": "2025-11-19",
+            "stadium": null,
+            "homeTeam": null,
+            "awayTeam": {
+                "name": "Urawa Reds",
+                "officialName": "Urawa Red Diamonds",
+                "slug": "urawa-red-diamonds",
+                "abbreviation": "RED",
+                "teamCountryCode": "JPN",
+                "stagePosition": null
+            },
+            "result": null,
+            "stage": {
+                "id": "FINAL",
+                "name": "FINAL",
+                "ordering": 7
+            },
+            "group": null,
+            "originCompetitionId": "afc-champions-league",
+            "originCompetitionName": "AFC Champions League",
+            "sport": "football"
+        },
+        {
+            "season": 2025,
+            "status": "scheduled",
+            "timeVenueUTC": "00:00:00",
+            "dateVenue": "2025-06-11",
+            "stadium": null,
+            "homeTeam": null,
+            "awayTeam": {
+                "name": "Urawa Reds",
+                "officialName": "Urawa Red Diamonds",
+                "slug": "urawa-red-diamonds",
+                "abbreviation": "RED",
+                "teamCountryCode": "JPN",
+                "stagePosition": null
+            },
+            "result": null,
+            "stage": {
+                "id": "FINAL",
+                "name": "FINAL",
+                "ordering": 7
+            },
+            "group": null,
+            "originCompetitionId": "afc-champions-league",
+            "originCompetitionName": "AFC Champions League",
+            "sport": "football"
+        },
+        {
+            "season": 2025,
+            "status": "scheduled",
+            "timeVenueUTC": "00:00:00",
+            "dateVenue": "2025-08-04",
             "stadium": null,
             "homeTeam": null,
             "awayTeam": {
