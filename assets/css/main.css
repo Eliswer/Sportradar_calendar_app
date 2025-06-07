@@ -99,6 +99,10 @@ body {
     color: red;
 }
 
+.sport-event-day:hover {
+    cursor: pointer;
+}
+
 .red-event-marker-wrapper {
     position: absolute;
     height: 100%;

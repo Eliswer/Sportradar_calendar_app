@@ -1,0 +1,21 @@
+.calendar__wrapper {
+    justify-content: space-around;
+    gap: 50px;
+}
+
+.event__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.event__title {
+    color: red;
+    border-bottom: 1px solid black;
+}
+
+.event__subtitle {
+    font-size: 1rem;
+}

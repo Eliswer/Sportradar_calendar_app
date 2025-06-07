@@ -96,6 +96,13 @@ export function appendMonthDays(container, year, month) {
 
             dayElement.appendChild(redDotMarkerWrapper);
 
+            dayElement.addEventListener("click", () => {
+                localStorage.setItem("selectedDate", formattedDate);
+                window.location.replace("sport-event.html");
+
+                console.log(formattedDate);
+            });
+
             sortedEvents[formattedDate].forEach((element) => {
                 const redDotMarker = document.createElement("div");
                 redDotMarker.classList.add("red-event-marker");
