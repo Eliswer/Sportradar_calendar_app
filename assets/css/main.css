@@ -92,9 +92,29 @@ body {
     align-items: center;
     text-align: left;
     color: rgb(82, 82, 82);
+    position: relative;
 }
 
 .sport-event-day {
     color: red;
-    border: 1px solid red;
+}
+
+.red-event-marker-wrapper {
+    position: absolute;
+    height: 100%;
+    right: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    align-items: center;
+    width: 35%;
+}
+
+.red-event-marker {
+    width: 6px;
+    height: 6px;
+    background-color: red;
+    border-radius: 50%;
+    margin: 0;
 }

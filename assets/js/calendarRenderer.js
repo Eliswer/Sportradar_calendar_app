@@ -6,6 +6,12 @@
 import { sortedEvents } from "./dataService.js";
 
 /**
+ * All the day elements displayed in a grid
+ * @type {HTMLElement}
+ */
+const generatedCalendarDay = document.querySelector(".calendar__day");
+
+/**
  * Array of month names.
  * @constant {string[]}
  */
@@ -84,6 +90,17 @@ export function appendMonthDays(container, year, month) {
 
         if (sortedEvents[formattedDate]) {
             dayElement.classList.add("sport-event-day");
+
+            const redDotMarkerWrapper = document.createElement("div");
+            redDotMarkerWrapper.classList.add("red-event-marker-wrapper");
+
+            dayElement.appendChild(redDotMarkerWrapper);
+
+            sortedEvents[formattedDate].forEach((element) => {
+                const redDotMarker = document.createElement("div");
+                redDotMarker.classList.add("red-event-marker");
+                redDotMarkerWrapper.appendChild(redDotMarker);
+            });
         }
 
         container.appendChild(dayElement);
