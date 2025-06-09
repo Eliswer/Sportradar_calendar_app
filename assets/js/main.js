@@ -64,14 +64,14 @@ async function initializeCalendar() {
  *
  * @function showPreviousMonth
  */
-function showPreviousMonth() {
+async function showPreviousMonth() {
     if (currentMonth > 0) {
         currentMonth -= 1;
     } else {
         currentMonth = 11;
         currentYear -= 1;
     }
-    renderCalendar(dayGrid, monthLabel, currentYear, currentMonth);
+    await renderCalendar(dayGrid, monthLabel, currentYear, currentMonth);
 }
 
 /**
@@ -79,14 +79,14 @@ function showPreviousMonth() {
  *
  * @function showNextMonth
  */
-function showNextMonth() {
+async function showNextMonth() {
     if (currentMonth < 11) {
         currentMonth += 1;
     } else {
         currentMonth = 0;
         currentYear += 1;
     }
-    renderCalendar(dayGrid, monthLabel, currentYear, currentMonth);
+    await renderCalendar(dayGrid, monthLabel, currentYear, currentMonth);
 }
 
 prevButton.addEventListener("click", showPreviousMonth);

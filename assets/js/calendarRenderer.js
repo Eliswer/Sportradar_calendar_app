@@ -75,8 +75,9 @@ export function appendEmptyDays(container, year, month) {
  * @param {HTMLElement} container - The container for day elements.
  * @param {number} year - The four-digit year.
  * @param {number} month - The zero-indexed month.
+ * @param {Object} sortedEvents - The events data sorted by date.
  */
-export function appendMonthDays(container, year, month) {
+export function appendMonthDays(container, year, month, sortedEvents) {
     const totalDays = daysInMonth(year, month);
 
     for (let day = 1; day <= totalDays; day++) {
@@ -100,8 +101,6 @@ export function appendMonthDays(container, year, month) {
             dayElement.addEventListener("click", () => {
                 localStorage.setItem("selectedDate", formattedDate);
                 window.location.replace("sport-event.html");
-
-                console.log(formattedDate);
             });
 
             sortedEvents[formattedDate].forEach((element) => {
@@ -113,7 +112,6 @@ export function appendMonthDays(container, year, month) {
 
         container.appendChild(dayElement);
     }
-    console.dir(sortedEvents);
 }
 
 /**
@@ -124,9 +122,12 @@ export function appendMonthDays(container, year, month) {
  * @param {number} year - The four-digit year.
  * @param {number} month - The zero-indexed month.
  */
-export function renderCalendar(dayGrid, monthLabel, year, month) {
+export async function renderCalendar(dayGrid, monthLabel, year, month) {
+    const storedData = localStorage.getItem("sportEvents");
+    const sortedEvents = storedData ? JSON.parse(storedData) : {};
+    
     clearElements(dayGrid);
     monthLabel.textContent = `${monthNames[month]} ${year}`;
     appendEmptyDays(dayGrid, year, month);
-    appendMonthDays(dayGrid, year, month);
+    appendMonthDays(dayGrid, year, month, sortedEvents);
 }
