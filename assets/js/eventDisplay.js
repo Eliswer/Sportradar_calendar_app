@@ -3,6 +3,12 @@
  * @description Retrieves and displays sport event data based on a selected date stored in localStorage.
  */
 
+/**
+ * Button to navigate back to the calendar.
+ * @type {HTMLElement}
+ */
+const backButton = document.querySelector(".back-to-calendar");
+
 // Retrieve stored sport events and selected date from localStorage
 const storedData = localStorage.getItem("sportEvents");
 const storedDateKey = localStorage.getItem("selectedDate");
@@ -77,3 +83,9 @@ if (storedData && storedDateKey) {
 } else {
     console.log("Nothing found in local storage.");
 }
+
+function goBackToCalendar() {
+    window.location.replace("index.html");
+}
+
+backButton.addEventListener("click", goBackToCalendar);
