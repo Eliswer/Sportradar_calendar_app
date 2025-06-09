@@ -155,9 +155,22 @@ body {
     .calendar__wrapper {
         max-width: none;
         width: 100%;
+        min-width: 300px;
     }
 
     #styled-button {
         bottom: 50px;
+    }
+
+    .red-event-marker-wrapper {
+        right: 0;
+        width: 100%;
+        height: 10px;
+        bottom: 0;
+        flex-direction: row;
+    }
+
+    .calendar__month-label {
+        font-size: 1.5rem;
     }
 }
