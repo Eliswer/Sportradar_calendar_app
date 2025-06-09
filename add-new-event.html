@@ -5,12 +5,70 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Calendar App</title>
         <link rel="stylesheet" href="assets/css/main.css" />
-        <link rel="stylesheet" href="assets/css/sport-event.css" />
-        <script type="module" defer src="./assets/js/eventDisplay.js"></script>
+        <link rel="stylesheet" href="assets/css/submit-new-event.css" />
+        <script
+            type="module"
+            defer
+            src="./assets/js/submitNewEvent.js"
+        ></script>
     </head>
     <body>
         <section class="calendar">
-            <div class="calendar__wrapper"></div>
+            <div class="calendar__wrapper">
+                <form class="event-form">
+                    <div>
+                        <label for="competition">Competition Name:</label>
+                        <input
+                            type="text"
+                            id="competition"
+                            name="competition"
+                            required
+                        />
+                    </div>
+
+                    <div>
+                        <label for="date">Date:</label>
+                        <input type="date" id="date" name="date" required />
+                    </div>
+
+                    <div>
+                        <label for="eventTime">Event Time:</label>
+                        <input
+                            type="time"
+                            id="eventTime"
+                            name="eventTime"
+                            required
+                        />
+                    </div>
+
+                    <div>
+                        <label for="homeTeam">Home Team:</label>
+                        <input
+                            type="text"
+                            id="homeTeam"
+                            name="homeTeam"
+                            required
+                        />
+                    </div>
+
+                    <div>
+                        <label for="awayTeam">Away Team:</label>
+                        <input
+                            type="text"
+                            id="awayTeam"
+                            name="awayTeam"
+                            required
+                        />
+                    </div>
+
+                    <div>
+                        <label for="sport">Sport:</label>
+                        <input type="text" id="sport" name="sport" required />
+                    </div>
+
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
             <button id="styled-button" class="back-to-calendar">
                 Back to calendar
             </button>

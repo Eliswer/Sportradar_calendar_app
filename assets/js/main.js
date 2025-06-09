@@ -31,6 +31,12 @@ const prevButton = document.querySelector(".calendar__nav-icon--left");
 const nextButton = document.querySelector(".calendar__nav-icon--right");
 
 /**
+ * Button to add a new sport event.
+ * @type {HTMLElement}
+ */
+const addNewEvent = document.querySelector(".add-new-event");
+
+/**
  * Stores the zero-indexed month (0 for January).
  * @type {number}
  */
@@ -87,3 +93,14 @@ prevButton.addEventListener("click", showPreviousMonth);
 nextButton.addEventListener("click", showNextMonth);
 
 initializeCalendar();
+
+/**
+ * Loads an HTML file that allows users to add a new sport event
+ *
+ * @function loadAddEventPage
+ */
+function loadAddEventPage() {
+    window.location.replace("add-new-event.html");
+}
+
+addNewEvent.addEventListener("click", loadAddEventPage);

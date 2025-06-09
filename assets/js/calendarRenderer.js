@@ -3,7 +3,8 @@
  * @description Renders calendar days and highlights days with events.
  */
 
-import { sortedEvents } from "./dataService.js";
+const storedData = localStorage.getItem("sportEvents");
+const sortedEvents = JSON.parse(storedData);
 
 /**
  * All the day elements displayed in a grid

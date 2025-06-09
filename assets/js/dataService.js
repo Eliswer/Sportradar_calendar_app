@@ -28,5 +28,7 @@ export async function loadSportData(url) {
         sortedEvents[formattedDate].push(event);
     });
 
-    localStorage.setItem("sportEvents", JSON.stringify(sortedEvents));
+    if (!localStorage.getItem("sportEvents")) {
+        localStorage.setItem("sportEvents", JSON.stringify(sortedEvents));
+    }
 }

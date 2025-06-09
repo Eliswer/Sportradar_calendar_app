@@ -84,6 +84,11 @@ if (storedData && storedDateKey) {
     console.log("Nothing found in local storage.");
 }
 
+/**
+ * Redirects the user back to main page / calendar
+ *
+ * @function loadAddEventPage
+ */
 function goBackToCalendar() {
     window.location.replace("index.html");
 }
