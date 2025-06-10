@@ -1,0 +1,24 @@
+{
+  "name": "sportradar-calendar",
+  "version": "1.0.0",
+  "description": "This custom-built calendar application demonstrates my ability to design and develop responsive, dynamic interfaces using HTML, CSS, and vanilla JavaScript, with clean, maintainable architecture and performance in mind.",
+  "main": "index.js",
+  "scripts": {
+    "start": "live-server --port=3000",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Eliswer/Sportradar-calendar.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Eliswer/Sportradar-calendar/issues"
+  },
+  "homepage": "https://github.com/Eliswer/Sportradar-calendar#readme",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}
